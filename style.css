@@ -1,0 +1,50 @@
+/* style.css */
+
+p
+		{
+		color: blue;
+		font-size: 10 px;
+		}
+		
+a
+		{
+			color:green;
+		}
+		
+#zone_commande
+		{
+		  position:absolute;
+      top:150px;
+		  left:650px;
+		}
+		
+#pilotage
+{
+	position:absolute;
+	top:800px;
+	left:520px;
+}
+		
+table
+		{
+		  border-collapse:collapse;
+		}
+		
+th
+		{
+		  border: 2px solid black;
+		  text-align :center;
+		}
+		
+td
+		{
+		  border:1px solid black;
+		  text-align :center;
+		}
+		
+.case
+	{
+		  width:18px;
+		  height:18px;
+		  background-color: gray;
+		}

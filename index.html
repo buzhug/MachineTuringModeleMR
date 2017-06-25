@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css"/>
+		
+		<title>  Machine de Turing  </title>
+		<script src="monScript.js"></script>
+		<script src="p5.min.js"></script>
+	
+	</head>
+		
+	<body>
+	<header><h1> Machine de Turing virtuelle </h1></header>
+		<p>  
+		On pourra consulter le site de <a href="http://www.machinedeturing.com">  Marc Raynaud</a> <br/> pour voir le prototype représenté ici virtuellement.
+
+		</p> 
+		<hr />
+		<!-- la zone de l'algorithme -->
+		<div id='zone_commande'>
+		<!-- le tableau de commandes se trouve ci-dessous -->
+		
+		<div id='tableau_commande'>
+		  		</div>
+		 <!-- les boutons pour lancer le fonctionnement -->
+		  		
+		</div>
+		
+		<!-- la zone de pilotage décalée sous la machine -->
+		<div id='pilotage'>
+		<form>
+		Pilotage pas à pas : 
+		<div id="demarrer">
+		<input type="button" value="d&eacute;marrer" onclick="demarrer();">
+		</div>
+		<div id="suivant" >
+		<input type="button"  value="suivant" onclick="suivant();">
+		</div>
+		<div id="arreter" >
+		<input type="button"  value="arr&ecirc;ter"  onclick="arreter();">
+		</div>
+		</form>
+		</div>
+			
+		<!-- le dessin se trouvera dans le div défini ci-dessous -->
+		<div id='monCanvas'></div>
+		
+	
+		
+		<hr />
+		
+		<p> en cours de modification</p>
+		
+	
+
+
+	
+	</body>
+</html>
