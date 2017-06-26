@@ -501,7 +501,7 @@ function ecriture()
 		{
 			window.console.log("changement écriture = "+(k));
 			lesDisques[numDisque].changeEtat(k);
-			document.getElementById(nouvelleLecture).style.backgroundColor='green';
+			document.getElementById(nouvelleLecture).style.backgroundColor='LightCyan';
 		}
 	}
 }
@@ -517,7 +517,7 @@ function deplacement()
 			for (var l=0;l<nbDisques;l++)
       		{
         		lesDisques[l].aGauche();
-        		document.getElementById(nouvelleLecture).style.backgroundColor='green';
+        		document.getElementById(nouvelleLecture).style.backgroundColor='LightCyan';
       		}
 		}
 	// déplacement vers la droite
@@ -527,7 +527,7 @@ function deplacement()
 			for (var l=0;l<nbDisques;l++)
       		{
         		lesDisques[l].aDroite();
-        		document.getElementById(nouvelleLecture).style.backgroundColor='green';
+        		document.getElementById(nouvelleLecture).style.backgroundColor='LightCyan';
       		}
 		}
 }
