@@ -2,7 +2,8 @@
 // Machine de Turing //
 ///////////////////////
 
-/* version toujours manuelle mais avec séparation des différentes fonctionnalités en vue d'une automatisation */
+/* version toujours manuelle mais avec séparation des différentes fonctionnalités en vue d'une automatisation 
+l'affichage de la couleur se fait bien au bon moment mais ne colle plus une fois le déplacement effectué */
 
 		
 // Le disque dur
@@ -479,7 +480,7 @@ function lecture()
           numDisque=i;
         }
       }
-      window.console.log("je pause");
+      
 	// décalage de 1 avec la valeur lue : B -> 0 ; 0 -> 1 ; 1 -> 2
 	window.console.log("valeur lue = "+valeurLue);
 	// affichage de la couleur
@@ -500,6 +501,7 @@ function ecriture()
 		{
 			window.console.log("changement écriture = "+(k));
 			lesDisques[numDisque].changeEtat(k);
+			document.getElementById(nouvelleLecture).style.backgroundColor='green';
 		}
 	}
 }
@@ -515,6 +517,7 @@ function deplacement()
 			for (var l=0;l<nbDisques;l++)
       		{
         		lesDisques[l].aGauche();
+        		document.getElementById(nouvelleLecture).style.backgroundColor='green';
       		}
 		}
 	// déplacement vers la droite
@@ -524,6 +527,7 @@ function deplacement()
 			for (var l=0;l<nbDisques;l++)
       		{
         		lesDisques[l].aDroite();
+        		document.getElementById(nouvelleLecture).style.backgroundColor='green';
       		}
 		}
 }
