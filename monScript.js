@@ -388,6 +388,8 @@ var pasSuivant=false;
 // la fonction qui lance la lecture de l'algorithme
 function demarrer()
 {
+	// enlève le pilotage automatique 
+	document.getElementById("pilotauto").style.visibility='hidden';
 	// tentative pour faire fonctionner la temporisation
 	noLoop();
 	// état des lieux des cases cochées
@@ -407,8 +409,9 @@ function demarrer()
 	//nouvelEtat=execution()+1;
 	execution();
 	pasSuivant=true;
-	// enlève le bouton démarrer
+	// enlève les boutons démarrer
 	document.getElementById("demarrer").style.visibility="hidden";
+	document.getElementById("demauto").style.visibility="hidden";
 	// rajoute les boutons suvant et arrêter
 	document.getElementById("suivant").style.visibility="visible";
 	document.getElementById("arreter").style.visibility='visible';
@@ -443,9 +446,13 @@ function arreter()
 	document.getElementById("Fetat").style.backgroundColor='blue';
 	if (ancienneLecture!="") document.getElementById(ancienneLecture).style.backgroundColor='white';
 	pasSuivant=false;
-	// rajoute le bouton démarrer
+	// remet les deux styles de pilotage
+	document.getElementById("pilotauto").style.visibility='visible';
+	document.getElementById("pilotage").style.visibility='visible';
+	// rajoute les boutons démarrer
 	document.getElementById("demarrer").style.visibility='visible';
-	// enleve les boutons suvant et arrêter
+	document.getElementById("demauto").style.visibility='visible';
+	// enleve les boutons suivant et arrêter
 	document.getElementById("suivant").style.visibility='hidden';
 	document.getElementById("arreter").style.visibility='hidden';
 	// tentative pour faire marcher la temporisation
@@ -599,7 +606,35 @@ function execution()
 	
 }
 		
-		
+	
+// le pilotage automatique
+///////////////////////////
+
+function automatique()
+{
+	// fait disparaître les boutons du pilotage manuel
+	document.getElementById("pilotage").style.visibility='hidden';
+	// fait disparaître les boutons de démarage
+	document.getElementById("demarrer").style.visibility='hidden';
+	document.getElementById("demauto").style.visibility='hidden';
+	// fait apparaître l'arrêt d'urgence
+	document.getElementById("arreturgence").style.visibility='visible';
+}	
+
+function arreturgence()
+{
+	// remet les deux styles de pilotage
+	document.getElementById("pilotauto").style.visibility='visible';
+	document.getElementById("pilotage").style.visibility='visible';
+	// rajoute les boutons démarrer
+	document.getElementById("demarrer").style.visibility='visible';
+	document.getElementById("demauto").style.visibility='visible';
+	// enleve les boutons suivant et arrêter
+	document.getElementById("suivant").style.visibility='hidden';
+	document.getElementById("arreter").style.visibility='hidden';
+	document.getElementById("arreturgence").style.visibility='hidden';
+	
+}
 
 		
 		
@@ -689,9 +724,14 @@ function setup()
   // initialisation des couleurs de case
   initCouleurCase();
   
+  // affiche les deux styles de pilotage
+	document.getElementById("pilotauto").style.visibility='visible';
+	document.getElementById("pilotage").style.visibility='visible';
+  
   // fait disparaître temporairement les boutons suivant et arrêter
   document.getElementById("suivant").style.visibility="hidden";
 	document.getElementById("arreter").style.visibility='hidden';
+	document.getElementById("arreturgence").style.visibility='hidden';
  }
  
 
