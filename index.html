@@ -29,16 +29,30 @@
 		
 		<!-- la zone de pilotage décalée sous la machine -->
 		<div id='pilotage'>
+			<form>
+			Pilotage pas à pas : 
+			<div id="demarrer">
+			<input type="button" value="d&eacute;marrer" onclick="demarrer();">
+			</div>
+			<div id="suivant" >
+			<input type="button"  value="suivant" onclick="suivant();">
+			</div>
+			<div id="arreter" >
+			<input type="button"  value="arr&ecirc;ter"  onclick="arreter();">
+			</div>
+			</form>
+		</div>
+		<!-- la zone de pilotage automatique-->
+		<div id='pilotauto'>
 		<form>
-		Pilotage pas à pas : 
-		<div id="demarrer">
-		<input type="button" value="d&eacute;marrer" onclick="demarrer();">
+		Pilotage automatique :
+		<div id="demarauto">
+		<div id="demauto">
+		<input type="button" value="d&eacute;marrer" onclick="automatique();">
 		</div>
-		<div id="suivant" >
-		<input type="button"  value="suivant" onclick="suivant();">
+		<div id="arreturgence">
+		<input type="button"  value="arr&ecirc;ter"  onclick="arreturgence();">
 		</div>
-		<div id="arreter" >
-		<input type="button"  value="arr&ecirc;ter"  onclick="arreter();">
 		</div>
 		</form>
 		</div>

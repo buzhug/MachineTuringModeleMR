@@ -21,8 +21,15 @@ a
 #pilotage
 {
 	position:absolute;
-	top:800px;
-	left:520px;
+	top:760px;
+	left:500px;
+}
+
+#pilotauto
+{
+	position:absolute;
+	top:720px;
+	left:500px;
 }
 		
 table
@@ -46,5 +53,4 @@ td
 	{
 		  width:18px;
 		  height:18px;
-		  background-color: gray;
 		}
