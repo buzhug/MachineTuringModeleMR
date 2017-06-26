@@ -575,13 +575,13 @@ function execution()
 	// balaye les cases de la ligne correspondante
 	window.console.log(casesCochees[letat][valeurLue]);
 	// actions a effectuer
-	/*
+	
 	// zone d'écriture
 	ecriture();
 		// zone de déplacement
 	deplacement();
-	*/
-	tPause=setTimeout(faire,delai);
+	
+	//tPause=setTimeout(faire,delai);
 	// zone de changement d'étape
 	nouvelEtat=etatFutur()+1;
 	
