@@ -401,7 +401,7 @@ function demarrer()
 	window.console.log("je démarre");
 	etatActuel=1;
 	document.getElementById("etat00").style.backgroundColor='blue';
-	nouvelEtat=execution(etatActuel-1)+1;
+	nouvelEtat=execution()+1;
 	pasSuivant=true;
 	// enlève le bouton démarrer
 	document.getElementById("demarrer").style.visibility="hidden";
@@ -419,7 +419,7 @@ function suivant()
 	{
 		document.getElementById(nomEtape(nouvelEtat-1)).style.backgroundColor='blue';
 		etatActuel=nouvelEtat;
-		nouvelEtat=execution(etatActuel-1)+1;
+		nouvelEtat=execution()+1;
 		pasSuivant=true;
 	}
 	else 
@@ -560,8 +560,9 @@ var tPause;
 
 
 // la fonction qui lit le contenu de la ligne de programmation
-function execution(letat)
+function execution()
 {
+	var letat=etatActuel-1;
 	compteurTour++;
 	window.console.log("compteurTour = "+compteurTour);
 	// attention letat a un décalage de 1 avec le numéro de l'étape
