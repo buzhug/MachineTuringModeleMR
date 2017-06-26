@@ -387,6 +387,8 @@ var pasSuivant=false;
 // la fonction qui lance la lecture de l'algorithme
 function demarrer()
 {
+	// tentative pour faire fonctionner la temporisation
+	noLoop();
 	// état des lieux des cases cochées
 	for (var i=0;i<nbEtats;i++)
 	{
@@ -445,6 +447,8 @@ function arreter()
 	// enleve les boutons suvant et arrêter
 	document.getElementById("suivant").style.visibility='hidden';
 	document.getElementById("arreter").style.visibility='hidden';
+	// tentative pour faire marcher la temporisation
+	loop();
 }
 
 //compteur de tour d'exécution
