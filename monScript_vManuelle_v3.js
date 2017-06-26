@@ -401,8 +401,7 @@ function demarrer()
 	window.console.log("je démarre");
 	etatActuel=1;
 	document.getElementById("etat00").style.backgroundColor='blue';
-	//nouvelEtat=execution()+1;
-	execution();
+	nouvelEtat=execution()+1;
 	pasSuivant=true;
 	// enlève le bouton démarrer
 	document.getElementById("demarrer").style.visibility="hidden";
@@ -420,8 +419,7 @@ function suivant()
 	{
 		document.getElementById(nomEtape(nouvelEtat-1)).style.backgroundColor='blue';
 		etatActuel=nouvelEtat;
-		//nouvelEtat=execution()+1;
-		execution();
+		nouvelEtat=execution()+1;
 		pasSuivant=true;
 	}
 	else 
@@ -552,7 +550,7 @@ function faire()
 	// zone de déplacement
 	deplacement();
 	// zone de changement d'étape
-	nouvelEtat=etatFutur()+1;
+	return etatFutur();
 }
 
 
@@ -577,15 +575,12 @@ function execution()
 	// balaye les cases de la ligne correspondante
 	window.console.log(casesCochees[letat][valeurLue]);
 	// actions a effectuer
-	/*
 	// zone d'écriture
 	ecriture();
 		// zone de déplacement
 	deplacement();
 	// zone de changement d'étape
-	nouvelEtat=etatFutur()+1;
-	*/
-	tPause=setTimeout(faire,delai);
+	return etatFutur();
 }
 		
 		
