@@ -572,7 +572,7 @@ function faire()
 
 
 // la variable de temporisation
-var delai=2000;
+var delai=500;
 var tPause;
 
 
@@ -609,6 +609,27 @@ function execution()
 	
 // le pilotage automatique
 ///////////////////////////
+var tAuto;
+
+function etapeSuivante()
+{
+	document.getElementById(nomEtape(etatActuel-1)).style.backgroundColor='white';
+		window.console.log("nouvelle étape : "+nouvelEtat);
+		if (nouvelEtat<12) 
+		{
+		document.getElementById(nomEtape(nouvelEtat-1)).style.backgroundColor='blue';
+			etatActuel=nouvelEtat;
+			//execution();
+			tAuto=setTimeout(execution,2*delai);
+			pasSuivant=true;
+		}
+		else 
+		{
+		document.getElementById("Fetat").style.backgroundColor='blue';
+			arreturgence();
+		}
+
+}
 
 function automatique()
 {
@@ -619,10 +640,31 @@ function automatique()
 	document.getElementById("demauto").style.visibility='hidden';
 	// fait apparaître l'arrêt d'urgence
 	document.getElementById("arreturgence").style.visibility='visible';
+	
+	//demarrage
+	// tentative pour faire fonctionner la temporisation
+	noLoop();
+	window.console.log("je démarre en automatique");
+	etatActuel=1;
+	nouvelEtat=1;
+	document.getElementById("etat00").style.backgroundColor='blue';
+	execution();
+	pasSuivant=true;
+	// passage d'étape en étape
+	if (pasSuivant)
+	{
+		tAuto=setInterval(etapeSuivante,2*delai);
+	}
+	else
+	{
+		clearInterval(tAuto);
+	}
+	
 }	
 
 function arreturgence()
 {
+	clearInterval(tAuto);
 	// remet les deux styles de pilotage
 	document.getElementById("pilotauto").style.visibility='visible';
 	document.getElementById("pilotage").style.visibility='visible';
@@ -634,7 +676,14 @@ function arreturgence()
 	document.getElementById("arreter").style.visibility='hidden';
 	document.getElementById("arreturgence").style.visibility='hidden';
 	
-}
+	window.console.log("j'arrête en urgence");
+	document.getElementById(nomEtape(etatActuel-1)).style.backgroundColor='white';
+	document.getElementById("Fetat").style.backgroundColor='blue';
+	if (ancienneLecture!="") document.getElementById(ancienneLecture).style.backgroundColor='white';
+	pasSuivant=false;
+	// tentative pour faire marcher la temporisation
+	loop();
+	}
 
 		
 		
