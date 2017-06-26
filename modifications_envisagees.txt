@@ -2,8 +2,14 @@ Modifications à envisager
 
 1. Pilotage automatique
 arriver à mettre un temporisateur pour permettre le pilotage automatique
+avec
+var x=setTimeout(mafonction,delai);
+clearTimeout(x);
 
 2. Fonctionnement de l'horloge
 Faire tourner l'horloge en fonction de ce que le programme regare : lecture, écriture, déplacement, changement d'étape
 
 3. Vérifier l'adéquation de la mise en couleur avec le timing
+
+4. Pour la possibilité d'enregistrer/lire les algorithmes
+voir loadJSON() et saveJSON() sur p5

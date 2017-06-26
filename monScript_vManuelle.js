@@ -2,7 +2,7 @@
 // Machine de Turing //
 ///////////////////////
 
-/* version toujours manuelle mais avec séparation des différentes fonctionnalités en vue d'une automatisation */
+/* mise en cohérence de l'effacement des couleurs quand on arrive en F */
 
 		
 // Le disque dur
@@ -452,14 +452,17 @@ var compteurTour=0;
 var ancienneLecture="";
 var nouvelleLecture="";
 
-// la gestion du disque repéré de la valeur lue dessus
-var valeurLue=0;
-var numDisque=-1;
-
-// la fonction de lecture
-function lecture()
+// la fonction qui lit le contenu de la ligne de programmation
+function execution(letat)
 {
-	for (var i=0;i<nbDisques;i++)
+	compteurTour++;
+	window.console.log("compteurTour = "+compteurTour);
+	// attention letat a un décalage de 1 avec le numéro de l'étape
+	// repère la donnée de lecture du disque
+	// détecte le bouton sur la zone de lecture/écriture et lit sa valeur
+	var valeurLue=0;
+	var numDisque=-1;
+      for (var i=0;i<nbDisques;i++)
       {
         var sonTexte=" ";
         // je teste l'abscisse et non l'angle pour éviter le modulo 2π
@@ -473,37 +476,28 @@ function lecture()
           numDisque=i;
         }
       }
-      window.console.log("je pause");
-	// décalage de 1 avec la valeur lue : B -> 0 ; 0 -> 1 ; 1 -> 2
+    // décalage de 1 avec la valeur lue : B -> 0 ; 0 -> 1 ; 1 -> 2
 	window.console.log("valeur lue = "+valeurLue);
 	// affichage de la couleur
 	if (ancienneLecture!="") document.getElementById(ancienneLecture).style.backgroundColor='white';
-	nouvelleLecture=nomEtape(etatActuel-1)+"lecture"+valeurLue;
+	nouvelleLecture=nomEtape(letat)+"lecture"+valeurLue;
 	document.getElementById(nouvelleLecture).style.backgroundColor='cyan';
-   }
-   
-   
-// la fonction d'écriture
-function ecriture()
-{
-	var letatA=etatActuel-1;
+	
+	// balaye les cases de la ligne correspondante
+	window.console.log(casesCochees[letat][valeurLue]);
+	// zone d'écriture
 	for (var k=0;k<3;k++)
 	{
-		window.console.log("case ("+letatA+" ; "+valeurLue+" ; "+k+") : "+casesCochees[letatA][valeurLue][k]);
-		if (casesCochees[letatA][valeurLue][k]) 
+		window.console.log("case ("+letat+" ; "+valeurLue+" ; "+k+") : "+casesCochees[letat][valeurLue][k]);
+		if (casesCochees[letat][valeurLue][k]) 
 		{
 			window.console.log("changement écriture = "+(k));
 			lesDisques[numDisque].changeEtat(k);
 		}
 	}
-}
-
-// la fonction de déplacement
-function deplacement()
-{
-	var letatA=etatActuel-1;
+	// zone de déplacement
 	// déplacement vers la gauche
-	if (casesCochees[letatA][valeurLue][3]) 
+	if (casesCochees[letat][valeurLue][3]) 
 		{
 			window.console.log("à gauche");
 			for (var l=0;l<nbDisques;l++)
@@ -512,7 +506,7 @@ function deplacement()
       		}
 		}
 	// déplacement vers la droite
-	if (casesCochees[letatA][valeurLue][4]) 
+	if (casesCochees[letat][valeurLue][4]) 
 		{
 			window.console.log("à droite");
 			for (var l=0;l<nbDisques;l++)
@@ -520,17 +514,12 @@ function deplacement()
         		lesDisques[l].aDroite();
       		}
 		}
-}
-
-// la fonction qui donne la nouvelle étape
-function etatFutur()
-{
-	var letatA=etatActuel-1;
-	var nvetat=letatA;
-	window.console.log("letat = "+letatA+" ; valeurLue= "+valeurLue);
+	// zone de changement d'étape
+	var nvetat=letat;
+	window.console.log("letat = "+letat+" ; valeurLue= "+valeurLue);
 	for (var k=5;k<17;k++)
 	{
-		if (casesCochees[letatA][valeurLue][k]) 
+		if (casesCochees[letat][valeurLue][k]) 
 		{
 			window.console.log("étape suivante : "+(k-4));
 			nvetat=k-5;
@@ -539,47 +528,6 @@ function etatFutur()
 	// retourne le nouvel état : nombre compris entre 1 et 12
 	ancienneLecture=nouvelleLecture;
 	return nvetat;
-	
-}
-
-// la fonction d'action
-function faire()
-{
-	// zone d'écriture
-	ecriture();
-	// zone de déplacement
-	deplacement();
-	// zone de changement d'étape
-	return etatFutur();
-}
-
-
-// la variable de temporisation
-var delai=100;
-var tPause;
-
-
-// la fonction qui lit le contenu de la ligne de programmation
-function execution(letat)
-{
-	compteurTour++;
-	window.console.log("compteurTour = "+compteurTour);
-	// attention letat a un décalage de 1 avec le numéro de l'étape
-	// repère la donnée de lecture du disque
-	// détecte le bouton sur la zone de lecture/écriture et lit sa valeur
-	valeurLue=0;
-	numDisque=-1;
-	lecture(); 
-    	
-	// balaye les cases de la ligne correspondante
-	window.console.log(casesCochees[letat][valeurLue]);
-	// actions a effectuer
-	// zone d'écriture
-	ecriture();
-		// zone de déplacement
-	deplacement();
-	// zone de changement d'étape
-	return etatFutur();
 }
 		
 		
