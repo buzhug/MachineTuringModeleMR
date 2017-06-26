@@ -274,6 +274,28 @@ function tableauCommande()
 var couleursCases=new Array(2);
 couleursCases=['gray','yellow'];
 
+// initialiser les couleurs de case pour éviter le double clic 
+function initCouleurCase()
+{
+	for (var i=0;i<nbEtats;i++)
+	{
+		for (var j=0;j<3;j++)
+		{
+			for (var k=0;k<17;k++)
+			{
+				// le nom de la case comporte 5 chiffres
+				var nomCase="case";
+				if (i<10) nomCase+="0";
+				nomCase+=i;
+				nomCase+=j;
+				if (k<10) nomCase+="0";
+				nomCase+=k;
+				document.getElementById(nomCase).style.backgroundColor=couleursCases[0];
+			}
+		}
+	}
+}
+
 // changer de couleur
 function changeCouleur(x,laCase)
 {
@@ -593,6 +615,9 @@ function setup()
   
   // le tableau de commandes
   tableauCommande();
+  
+  // initialisation des couleurs de case
+  initCouleurCase();
   
   // fait disparaître temporairement les boutons suivant et arrêter
   document.getElementById("suivant").style.visibility="hidden";
