@@ -551,8 +551,6 @@ function faire()
 	ecriture();
 	// zone de déplacement
 	deplacement();
-	// zone de changement d'étape
-	nouvelEtat=etatFutur()+1;
 }
 
 
@@ -582,10 +580,12 @@ function execution()
 	ecriture();
 		// zone de déplacement
 	deplacement();
-	// zone de changement d'étape
-	nouvelEtat=etatFutur()+1;
 	*/
 	tPause=setTimeout(faire,delai);
+	// zone de changement d'étape
+	nouvelEtat=etatFutur()+1;
+	
+	
 }
 		
 		
