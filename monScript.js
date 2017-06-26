@@ -561,7 +561,7 @@ function faire()
 
 
 // la variable de temporisation
-var delai=100;
+var delai=2000;
 var tPause;
 
 
