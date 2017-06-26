@@ -555,6 +555,8 @@ function faire()
 	ecriture();
 	// zone de déplacement
 	deplacement();
+	// zone de changement d'étape
+	nouvelEtat=etatFutur()+1;
 }
 
 
@@ -579,15 +581,16 @@ function execution()
 	// balaye les cases de la ligne correspondante
 	window.console.log(casesCochees[letat][valeurLue]);
 	// actions a effectuer
-	
+	/*
 	// zone d'écriture
 	ecriture();
 		// zone de déplacement
 	deplacement();
-	
-	//tPause=setTimeout(faire,delai);
 	// zone de changement d'étape
 	nouvelEtat=etatFutur()+1;
+	*/
+	tPause=setTimeout(faire,delai);
+	
 	
 	
 }
