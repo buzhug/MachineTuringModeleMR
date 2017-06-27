@@ -4,7 +4,7 @@
 
 /* version automatique avec séparation des différentes fonctionnalités 
 l'affichage de la couleur se fait bien au bon moment mais ne colle plus une fois le déplacement effectué 
-problème de l'arrêt d'urgence*/
+l'arrêt d'urgence semble fonctionner */
 
 
 
@@ -643,8 +643,8 @@ function etapeSuivante()
 		{
 		document.getElementById(nomEtape(nouvelEtat-1)).style.backgroundColor='blue';
 			etatActuel=nouvelEtat;
-			//execution();
-			tAuto=setTimeout(execution,2*delai);
+			execution();
+			//tAuto=setTimeout(execution,2*delai);
 			pasSuivant=true;
 		}
 		else 
