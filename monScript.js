@@ -436,6 +436,9 @@ function demarrer()
 	// rajoute les boutons suvant et arrêter
 	document.getElementById("suivant").style.visibility="visible";
 	document.getElementById("arreter").style.visibility='visible';
+	// fait disparaître les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='hidden';
+	document.getElementById("effaceDisque").style.visibility='hidden';
 }
 
 // la fonction qui permet de poursuivre le déroulement de l'algorithme
@@ -477,8 +480,10 @@ function arreter()
 	// enleve les boutons suivant et arrêter
 	document.getElementById("suivant").style.visibility='hidden';
 	document.getElementById("arreter").style.visibility='hidden';
-	// tentative pour faire marcher la temporisation
-	loop();
+	
+	// affiche les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='visible';
+	document.getElementById("effaceDisque").style.visibility='visible';
 }
 
 ////
@@ -676,6 +681,10 @@ function automatique()
 	// fait apparaître l'arrêt d'urgence
 	document.getElementById("arreturgence").style.visibility='visible';
 	
+	// fait disparaître les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='hidden';
+	document.getElementById("effaceDisque").style.visibility='hidden';
+	
 	//demarrage
 	
 	window.console.log("je démarre en automatique");
@@ -710,7 +719,13 @@ function arreturgence()
 	document.getElementById("arreter").style.visibility='hidden';
 	document.getElementById("arreturgence").style.visibility='hidden';
 	
+	// affiche les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='visible';
+	document.getElementById("effaceDisque").style.visibility='visible';
+	
 	window.console.log("j'arrête en urgence");
+	
+	// remet les couleurs d'étape et de lecture à zéro
 	document.getElementById(nomEtape(etatActuel-1)).style.backgroundColor='white';
 	document.getElementById("Fetat").style.backgroundColor='blue';
 	if (ancienneLecture!="") document.getElementById(ancienneLecture).style.backgroundColor='white';
@@ -718,10 +733,27 @@ function arreturgence()
 	
 	}
 
+
+////
+// Les remises à zéro
+///////////////////////
+
+/* remise à zéro de la table des transitions */
+function effaceTable()
+{
+	window.console.log("pour remettre à zéro la table des transitions");
+}
+
+
+/* remise à zéro des données sur les disques */
+function effaceDisque()
+{
+	window.console.log("pour remettre à zéro les données sur les disques");
+}
 		
-		
-// L'animation
-////////////////////////////
+////////////////////////		
+/* L'animation		 */
+//////////////////////
 		
 //var angle_base = TWO_PI / nbDisques;
 
@@ -825,6 +857,11 @@ function setup()
 	// remet le curseur à la bonne valeur
 	delai=500;
 	document.getElementById("vitesse").value=delai;
+	
+	
+	// affiche les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='visible';
+	document.getElementById("effaceDisque").style.visibility='visible';
  }
  
 

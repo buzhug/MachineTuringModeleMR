@@ -91,3 +91,17 @@ td
 {
 	border:0;
 }
+
+#effaceTable
+{
+	position:absolute;
+	top:935px;
+	left:150px;
+}
+
+#effaceDisque
+{
+	position:absolute;
+	top:935px;
+	left:830px;
+}
