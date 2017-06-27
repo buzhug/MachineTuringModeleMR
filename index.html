@@ -13,9 +13,15 @@
 	<body>
 	<header><h1> Machine de Turing virtuelle </h1></header>
 		<p>  
-		On pourra consulter le site de <a href="http://www.machinedeturing.com">  Marc Raynaud</a> <br/> pour voir le prototype représenté ici virtuellement.
-
+		On pourra consulter le site de <a href="http://www.machinedeturing.com">  Marc Raynaud</a> pour voir le prototype représenté ici virtuellement.
 		</p> 
+		<table id="action">
+		<th>
+		<td class="consignes">1. Commencez par remplir la table des transitions.</td>
+		<td class="consignes">2. Saisissez maintenant les données sur le disque.</td>
+		</th>
+		</table>
+				
 		<hr />
 		<!-- la zone de l'algorithme -->
 		<div id='zone_commande'>
@@ -66,7 +72,11 @@
 		<!-- le dessin se trouvera dans le div défini ci-dessous -->
 		<div id='monCanvas'></div>
 		
-	
+	<!-- pour effacer ce qui a été fait -->
+	<div id="effacer">
+	<input type="button" id="effaceTable" value="Effacer les saisies dans la table des transitions." onclick="effaceTable();">
+	<input type="button" id="effaceDisque" value="Effacer les données sur le disque." onclick="effaceDisque();">
+	</div>
 		
 		<hr />
 		

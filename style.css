@@ -15,34 +15,52 @@ a
 		{
 		  position:absolute;
       top:150px;
-		  left:650px;
+		  left:10px;
+		  width:700px;
 		}
 		
 #pilotage
 {
 	position:absolute;
 	top:760px;
-	left:500px;
+	left:550px;
 }
 
 #pilotauto
 {
 	position:absolute;
 	top:720px;
-	left:500px;
+	left:550px;
 }
 
 #curseur
 {
 	position:absolute;
 	top:680px;
-	left:500px;
+	left:550px;
 }
+
+/* ne marche pas
+#monCanvas
+{
+	position:abolute;
+	top:150px;
+	right:10px;
+	width:700px;
+}
+*/
+
+
 		
 table
 		{
 		  border-collapse:collapse;
 		}
+		
+caption
+{
+	font-size:16px;
+}
 		
 th
 		{
@@ -61,3 +79,29 @@ td
 		  width:18px;
 		  height:18px;
 		}
+		
+		
+.consignes
+{
+	width:700px;
+	border:0px;
+}
+
+#action
+{
+	border:0;
+}
+
+#effaceTable
+{
+	position:absolute;
+	top:935px;
+	left:150px;
+}
+
+#effaceDisque
+{
+	position:absolute;
+	top:935px;
+	left:830px;
+}
