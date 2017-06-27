@@ -2,8 +2,9 @@
 // Machine de Turing //
 ///////////////////////
 
-/* version toujours manuelle mais avec séparation des différentes fonctionnalités en vue d'une automatisation 
-l'affichage de la couleur se fait bien au bon moment mais ne colle plus une fois le déplacement effectué */
+/* version automatique avec séparation des différentes fonctionnalités 
+l'affichage de la couleur se fait bien au bon moment mais ne colle plus une fois le déplacement effectué 
+problème de l'arrêt d'urgence*/
 
 		
 // Le disque dur
