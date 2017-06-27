@@ -313,7 +313,6 @@ function initCouleurCase()
 			if (k<=2) styleCase.backgroundColor=couleursCases[0];
 			if ((k==3)||(k==4)) styleCase.backgroundColor=couleursCases[1];
 			if (k>4) styleCase.backgroundColor=couleursCases[2+k%2];
-			document.getElementById(nomCase).innerHTML="";
 				//document.getElementById(nomCase).style.backgroundColor=couleursCases[0];
 			}
 		}
@@ -333,13 +332,15 @@ function changeCouleur(x,laCase)
 	// On modifie les cases du tableau html grace à leur id 
 	//var x=document.getElementById(laCase);
 	// On change la couleur 
-	if ((x.innerHTML=="")&&(peutEtreCochee(i,j,k))) 
+	if ((x.style.backgroundColor==couleursCases[0])&&(peutEtreCochee(i,j,k))) 
 	{
+		x.style.backgroundColor=couleursCases[1];
 		x.innerHTML="\u2B24";
 		casesCochees[i][j][k]=true;
 	}
 	else 
 	{
+		x.style.backgroundColor=couleursCases[0];
 		x.innerHTML="";
 		casesCochees[i][j][k]=false;
 	}
@@ -420,8 +421,6 @@ var pasSuivant=false;
 // la fonction qui lance la lecture de l'algorithme
 function demarrer()
 {
-	// remet l'état F en blanc, au cas où
-	document.getElementById("Fetat").style.backgroundColor='white';
 	// enlève le pilotage automatique 
 	document.getElementById("pilotauto").style.visibility='hidden';
 	
@@ -685,8 +684,6 @@ function etapeSuivante()
 
 function automatique()
 {
-	// remet l'état F en blanc, au cas où
-	document.getElementById("Fetat").style.backgroundColor='white';
 	// fait disparaître les boutons du pilotage manuel
 	document.getElementById("pilotage").style.visibility='hidden';
 	// fait disparaître les boutons de démarage
@@ -756,21 +753,7 @@ function arreturgence()
 function effaceTable()
 {
 	window.console.log("pour remettre à zéro la table des transitions");
-	// vide les cases
 	initCouleurCase();
-	// remets à zéro le tableau des cases cochées
-	for (var i=0;i<nbEtats;i++)
-	{
-		for (var j=0;j<3;j++)
-		{
-			for (var k=0;k<17;k++)
-			{
-			casesCochees[i][j][k]=false;
-			}
-		}
-	}
-	// remet l'état F en blanc, au cas où
-	document.getElementById("Fetat").style.backgroundColor='white';
 }
 
 

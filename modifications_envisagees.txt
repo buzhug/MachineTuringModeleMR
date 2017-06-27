@@ -18,6 +18,7 @@ voir loadJSON() et saveJSON() sur p5 -> on va attendre un peu
 // les demandes de Marc
 
 1. la table des transitions à gauche et le disque à droite avec au dessus, les indications "Commencer par remplir la table des transitions" et à droite "Saisissez maintenant les données sur le disque"
+-> fait mais ça ne me semble pas une bonne idée car ça empêche d'étendre la table des transitions ; résidu de tableau apparent en haut à gauche … je ne sais pas pourquoi
 
 2. Pour la table des transitions, je verrais bien :
 
@@ -26,5 +27,6 @@ Colonnes déplacements sur fond jaune clair
 Colonnes états : un fond clair en alternant de légères différences une colonne sur deux de façon à mieux se repérer
 
 Et si tu pouvais faire que les cases sélectionnées soient marquées par un rond gris foncé qui rappellerais les perçages....
+-> nécessite sans doute d'aller voir dans les textures … en fait non, juste trouver le bon caractère unicode et la bonne taille
 
-3. Il faudrait aussi deux boutons "Effacer les saisies dans la table des transitions" et "Effacer les données sur le disque"
+3. Il faudrait aussi deux boutons "Effacer les saisies dans la table des transitions" et "Effacer les données sur le disque" -> fait
