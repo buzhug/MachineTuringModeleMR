@@ -742,6 +742,7 @@ function arreturgence()
 function effaceTable()
 {
 	window.console.log("pour remettre à zéro la table des transitions");
+	initCouleurCase();
 }
 
 
@@ -749,6 +750,10 @@ function effaceTable()
 function effaceDisque()
 {
 	window.console.log("pour remettre à zéro les données sur les disques");
+	for (var i=0;i<nbDisques;i++)
+  {
+    lesDisques[i].changeEtat(0);
+  }
 }
 		
 ////////////////////////		
