@@ -65,7 +65,7 @@ unDisque.prototype.distanceSouris=function()
 	{
 		  var xCentre=this.x+cote/2;
 		  var yCentre=this.y+cote/2;
-		  var xSouris=mouseX-xDecalage;
+		  var xSouris=mouseX-xDecalage-decalageCanvas;
 		  var ySouris=mouseY-yDecalage;
 		 //window.alert('le disque : ('+xCentre+';'+yCentre+')');
 		  return (xCentre-xSouris)*(xCentre-xSouris)
@@ -77,8 +77,8 @@ unDisque.prototype.estSelectionne=function()
 	{
 		  //window.alert('disque : ('+this.x+';'+this.y+')');
 		  var lecartSouris=this.distanceSouris();
-			//window.alert(lecartSouris);
-		  if (lecartSouris<50)
+			window.console.log("disque en : ("+this.x+";"+this.y+") ; souris en : ("+mouseX+" ; "+mouseY+") ; cela donne comme écart : "+lecartSouris);
+		  if (lecartSouris<75)
 		  {
 		    //window.alert('redessine');
 		    this.etat=(this.etat+1)%3;
