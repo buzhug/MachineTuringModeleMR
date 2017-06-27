@@ -460,6 +460,7 @@ function suivant()
 function arreter()
 {
 	window.console.log("j'arrête");
+	// remet les cases de lecture ett d'étapes en blanc 
 	document.getElementById(nomEtape(etatActuel-1)).style.backgroundColor='white';
 	document.getElementById("Fetat").style.backgroundColor='blue';
 	if (ancienneLecture!="") document.getElementById(ancienneLecture).style.backgroundColor='white';
@@ -627,10 +628,17 @@ function execution()
 	
 	
 }
+
 		
 ////	
 // Le pilotage automatique
 ///////////////////////////
+// le changement de vitesse de temporisation
+function changeVitesse(nvit)
+{ 
+	window.console.log("passage de la vitesse à "+nvit);
+	delai=nvit;
+}
 
 // pour lancer l'execution en boucle
 var tAuto=null;
@@ -803,6 +811,10 @@ function setup()
   document.getElementById("suivant").style.visibility="hidden";
 	document.getElementById("arreter").style.visibility='hidden';
 	document.getElementById("arreturgence").style.visibility='hidden';
+	
+	// remet le curseur à la bonne valeur
+	delai=500;
+	document.getElementById("vitesse").value=delai;
  }
  
 

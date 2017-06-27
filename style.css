@@ -31,6 +31,13 @@ a
 	top:720px;
 	left:500px;
 }
+
+#curseur
+{
+	position:absolute;
+	top:680px;
+	left:500px;
+}
 		
 table
 		{

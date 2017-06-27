@@ -4,12 +4,27 @@ Modifications à envisager
 arriver à mettre un temporisateur pour permettre le pilotage automatique
 avec
 var x=setTimeout(mafonction,delai);
-clearTimeout(x);
+clearTimeout(x); -> fait
 
 2. Fonctionnement de l'horloge
-Faire tourner l'horloge en fonction de ce que le programme regare : lecture, écriture, déplacement, changement d'étape
+Faire tourner l'horloge en fonction de ce que le programme regare : lecture, écriture, déplacement, changement d'étape -> repoussé à plus tard
 
-3. Vérifier l'adéquation de la mise en couleur avec le timing
+3. Vérifier l'adéquation de la mise en couleur avec le timing -> ça ne collera jamais, c'est déjà mieux qu'avant
 
 4. Pour la possibilité d'enregistrer/lire les algorithmes
-voir loadJSON() et saveJSON() sur p5
+voir loadJSON() et saveJSON() sur p5 -> on va attendre un peu
+
+
+// les demandes de Marc
+
+1. la table des transitions à gauche et le disque à droite avec au dessus, les indications "Commencer par remplir la table des transitions" et à droite "Saisissez maintenant les données sur le disque"
+
+2. Pour la table des transitions, je verrais bien :
+
+Colonnes déplacements sur fond jaune clair
+
+Colonnes états : un fond clair en alternant de légères différences une colonne sur deux de façon à mieux se repérer
+
+Et si tu pouvais faire que les cases sélectionnées soient marquées par un rond gris foncé qui rappellerais les perçages....
+
+3. Il faudrait aussi deux boutons "Effacer les saisies dans la table des transitions" et "Effacer les données sur le disque"
