@@ -6,6 +6,12 @@
 l'affichage de la couleur se fait bien au bon moment mais ne colle plus une fois le déplacement effectué 
 problème de l'arrêt d'urgence*/
 
+
+
+////////////////////////
+/* La zone graphique */
+//////////////////////
+
 		
 // Le disque dur
 //////////////////
@@ -112,9 +118,8 @@ unDisque.prototype.changeEtat=function(letat)
 
 		
 
-		
-		// Les boutons de commande
-		///////////////////////////
+// Les boutons de commande
+///////////////////////////
 		
 		
 		var btn_Droite=new unBouton(80,700,"D",'yellow');
@@ -181,6 +186,10 @@ unDisque.prototype.changeEtat=function(letat)
 		  this.texte=letexte;
 		  this.dessiner();
 		}
+		
+/////////////////////////
+/* La zone algorithme */
+///////////////////////
 		
 		
 // Le tableau de commande
@@ -380,19 +389,27 @@ function peutEtreCochee(i,j,k)
 }
 
 
+/////////////////////////////////////////////
+/* La zone de traitenemnt de l'algorithme */
+///////////////////////////////////////////
+
 // la variable qui donne le numéro de l'étape : numéro correspondant à l'affichage
 var etatActuel=0;
 var nouvelEtat=1;
 // la variable pour pouvoir passer à l'étape suivante
 var pasSuivant=false;
 
+
+////
+// Algorithme pas à pas
+/////////////////////////
+
 // la fonction qui lance la lecture de l'algorithme
 function demarrer()
 {
 	// enlève le pilotage automatique 
 	document.getElementById("pilotauto").style.visibility='hidden';
-	// tentative pour faire fonctionner la temporisation
-	noLoop();
+	
 	// état des lieux des cases cochées
 	for (var i=0;i<nbEtats;i++)
 	{
@@ -459,6 +476,10 @@ function arreter()
 	// tentative pour faire marcher la temporisation
 	loop();
 }
+
+////
+// L'exécution de l'algorithme
+///////////////////////////////
 
 //compteur de tour d'exécution
 var compteurTour=0;
@@ -607,9 +628,11 @@ function execution()
 	
 }
 		
-	
-// le pilotage automatique
+////	
+// Le pilotage automatique
 ///////////////////////////
+
+// pour lancer l'execution en boucle
 var tAuto=null;
 
 function etapeSuivante()
@@ -643,8 +666,7 @@ function automatique()
 	document.getElementById("arreturgence").style.visibility='visible';
 	
 	//demarrage
-	// tentative pour faire fonctionner la temporisation
-	noLoop();
+	
 	window.console.log("je démarre en automatique");
 	etatActuel=1;
 	nouvelEtat=1;
@@ -682,8 +704,7 @@ function arreturgence()
 	document.getElementById("Fetat").style.backgroundColor='blue';
 	if (ancienneLecture!="") document.getElementById(ancienneLecture).style.backgroundColor='white';
 	pasSuivant=false;
-	// tentative pour faire marcher la temporisation
-	loop();
+	
 	}
 
 		
