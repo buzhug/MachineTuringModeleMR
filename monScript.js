@@ -2,9 +2,9 @@
 // Machine de Turing //
 ///////////////////////
 
-/* version automatique avec séparation des différentes fonctionnalités 
-l'affichage de la couleur se fait bien au bon moment mais ne colle plus une fois le déplacement effectué 
-l'arrêt d'urgence semble fonctionner */
+/* ajustement ergonomie
+passage du disque à droite 
+et de la table des transitions à gauche */
 
 
 
@@ -215,7 +215,7 @@ function nomEtape(etatencours)
 function tableauCommande()
 {
 	// entête du tableau 
-	var enteteTableau="<table><caption>Tableau de programmation</caption><thead>";
+	var enteteTableau="<table><caption>Table des transitions</caption><thead>";
 	enteteTableau+="<tr><th rowspan='2'>Etat</th><th  rowspan='2'>Lecture</th><th colspan='3'>Ecriture</th><th colspan='2'>Déplacement</th><th colspan='12'>Nouvel état</th></tr>";
 	enteteTableau+="<tr><th>b</th>";
 	for (var i=0;i<2;i++)
@@ -721,15 +721,20 @@ function arreturgence()
 ////////////////////////////
 		
 //var angle_base = TWO_PI / nbDisques;
+
+// le décalage du disque
+var decalageCanvas=600;
 		
 // La fonction de démarrage
 			
 function setup()
 {
-  var leCanvas=createCanvas(800, 800);
+  var leCanvas=createCanvas(800+decalageCanvas, 800);
   leCanvas.parent('monCanvas');
   
-  
+  // le décalage vers la droite
+  push();
+  translate(decalageCanvas,0);
   
   // le disque dur
   push();
@@ -776,6 +781,9 @@ function setup()
     lesDisques[i].dessiner();
   }
   
+  // décalage des boutons
+  push();
+  translate(50,0);
   
   // les boutons
   textSize(24);
@@ -795,7 +803,11 @@ function setup()
   btn_Lecture.dessiner();
   btn_ValeurLue.dessiner();
   
+  //fin décalage des boutons
+  pop();
   
+  // fin du graphique
+  pop();
   
   // le tableau de commandes
   tableauCommande();
