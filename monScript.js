@@ -2,9 +2,9 @@
 // Machine de Turing //
 ///////////////////////
 
-/* version automatique avec séparation des différentes fonctionnalités 
-l'affichage de la couleur se fait bien au bon moment mais ne colle plus une fois le déplacement effectué 
-l'arrêt d'urgence semble fonctionner */
+/* ajustement ergonomie
+passage du disque à droite 
+et de la table des transitions à gauche */
 
 
 
@@ -12,6 +12,8 @@ l'arrêt d'urgence semble fonctionner */
 /* La zone graphique */
 //////////////////////
 
+// le décalage du disque pour le mettre à droite
+var decalageCanvas=600;
 		
 // Le disque dur
 //////////////////
@@ -19,7 +21,7 @@ l'arrêt d'urgence semble fonctionner */
 var rayon=300;
 var xCentre=rayon;
 var yCentre=rayon;
-var xDecalage=rayon+10;
+var xDecalage=rayon+10+decalageCanvas;
 var yDecalage=rayon+10;
 		
 // Les disques
@@ -65,6 +67,7 @@ unDisque.prototype.distanceSouris=function()
 	{
 		  var xCentre=this.x+cote/2;
 		  var yCentre=this.y+cote/2;
+		  //var xSouris=mouseX-xDecalage;
 		  var xSouris=mouseX-xDecalage;
 		  var ySouris=mouseY-yDecalage;
 		 //window.alert('le disque : ('+xCentre+';'+yCentre+')');
@@ -77,8 +80,8 @@ unDisque.prototype.estSelectionne=function()
 	{
 		  //window.alert('disque : ('+this.x+';'+this.y+')');
 		  var lecartSouris=this.distanceSouris();
-			//window.alert(lecartSouris);
-		  if (lecartSouris<50)
+			//window.console.log("disque en : ("+this.x+";"+this.y+") ; souris en : ("+mouseX+" ; "+mouseY+") ; cela donne comme écart : "+lecartSouris);
+		  if (lecartSouris<75)
 		  {
 		    //window.alert('redessine');
 		    this.etat=(this.etat+1)%3;
@@ -215,7 +218,7 @@ function nomEtape(etatencours)
 function tableauCommande()
 {
 	// entête du tableau 
-	var enteteTableau="<table><caption>Tableau de programmation</caption><thead>";
+	var enteteTableau="<table><caption>Table des transitions</caption><thead>";
 	enteteTableau+="<tr><th rowspan='2'>Etat</th><th  rowspan='2'>Lecture</th><th colspan='3'>Ecriture</th><th colspan='2'>Déplacement</th><th colspan='12'>Nouvel état</th></tr>";
 	enteteTableau+="<tr><th>b</th>";
 	for (var i=0;i<2;i++)
@@ -433,6 +436,9 @@ function demarrer()
 	// rajoute les boutons suvant et arrêter
 	document.getElementById("suivant").style.visibility="visible";
 	document.getElementById("arreter").style.visibility='visible';
+	// fait disparaître les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='hidden';
+	document.getElementById("effaceDisque").style.visibility='hidden';
 }
 
 // la fonction qui permet de poursuivre le déroulement de l'algorithme
@@ -460,6 +466,7 @@ function suivant()
 function arreter()
 {
 	window.console.log("j'arrête");
+	// remet les cases de lecture ett d'étapes en blanc 
 	document.getElementById(nomEtape(etatActuel-1)).style.backgroundColor='white';
 	document.getElementById("Fetat").style.backgroundColor='blue';
 	if (ancienneLecture!="") document.getElementById(ancienneLecture).style.backgroundColor='white';
@@ -473,8 +480,10 @@ function arreter()
 	// enleve les boutons suivant et arrêter
 	document.getElementById("suivant").style.visibility='hidden';
 	document.getElementById("arreter").style.visibility='hidden';
-	// tentative pour faire marcher la temporisation
-	loop();
+	
+	// affiche les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='visible';
+	document.getElementById("effaceDisque").style.visibility='visible';
 }
 
 ////
@@ -627,10 +636,17 @@ function execution()
 	
 	
 }
+
 		
 ////	
 // Le pilotage automatique
 ///////////////////////////
+// le changement de vitesse de temporisation
+function changeVitesse(nvit)
+{ 
+	window.console.log("passage de la vitesse à "+nvit);
+	delai=nvit;
+}
 
 // pour lancer l'execution en boucle
 var tAuto=null;
@@ -664,6 +680,10 @@ function automatique()
 	document.getElementById("demauto").style.visibility='hidden';
 	// fait apparaître l'arrêt d'urgence
 	document.getElementById("arreturgence").style.visibility='visible';
+	
+	// fait disparaître les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='hidden';
+	document.getElementById("effaceDisque").style.visibility='hidden';
 	
 	//demarrage
 	
@@ -699,7 +719,13 @@ function arreturgence()
 	document.getElementById("arreter").style.visibility='hidden';
 	document.getElementById("arreturgence").style.visibility='hidden';
 	
+	// affiche les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='visible';
+	document.getElementById("effaceDisque").style.visibility='visible';
+	
 	window.console.log("j'arrête en urgence");
+	
+	// remet les couleurs d'étape et de lecture à zéro
 	document.getElementById(nomEtape(etatActuel-1)).style.backgroundColor='white';
 	document.getElementById("Fetat").style.backgroundColor='blue';
 	if (ancienneLecture!="") document.getElementById(ancienneLecture).style.backgroundColor='white';
@@ -707,22 +733,45 @@ function arreturgence()
 	
 	}
 
+
+////
+// Les remises à zéro
+///////////////////////
+
+/* remise à zéro de la table des transitions */
+function effaceTable()
+{
+	window.console.log("pour remettre à zéro la table des transitions");
+	initCouleurCase();
+}
+
+
+/* remise à zéro des données sur les disques */
+function effaceDisque()
+{
+	window.console.log("pour remettre à zéro les données sur les disques");
+	for (var i=0;i<nbDisques;i++)
+  {
+    lesDisques[i].changeEtat(0);
+  }
+}
 		
-		
-// L'animation
-////////////////////////////
+////////////////////////		
+/* L'animation		 */
+//////////////////////
 		
 //var angle_base = TWO_PI / nbDisques;
+
+
 		
 // La fonction de démarrage
 			
 function setup()
 {
-  var leCanvas=createCanvas(800, 800);
+  var leCanvas=createCanvas(800+decalageCanvas, 800);
   leCanvas.parent('monCanvas');
   
-  
-  
+    
   // le disque dur
   push();
   translate(xDecalage,yDecalage);
@@ -768,6 +817,9 @@ function setup()
     lesDisques[i].dessiner();
   }
   
+  // décalage des boutons
+  push();
+  translate(decalageCanvas+50,0);
   
   // les boutons
   textSize(24);
@@ -787,6 +839,9 @@ function setup()
   btn_Lecture.dessiner();
   btn_ValeurLue.dessiner();
   
+  //fin décalage des boutons
+  pop();
+  
   
   
   // le tableau de commandes
@@ -803,6 +858,15 @@ function setup()
   document.getElementById("suivant").style.visibility="hidden";
 	document.getElementById("arreter").style.visibility='hidden';
 	document.getElementById("arreturgence").style.visibility='hidden';
+	
+	// remet le curseur à la bonne valeur
+	delai=500;
+	document.getElementById("vitesse").value=delai;
+	
+	
+	// affiche les boutons de remise à zéro
+	document.getElementById("effaceTable").style.visibility='visible';
+	document.getElementById("effaceDisque").style.visibility='visible';
  }
  
 
