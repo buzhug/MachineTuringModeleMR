@@ -12,6 +12,8 @@ et de la table des transitions à gauche */
 /* La zone graphique */
 //////////////////////
 
+// le décalage du disque pour le mettre à droite
+var decalageCanvas=600;
 		
 // Le disque dur
 //////////////////
@@ -19,7 +21,7 @@ et de la table des transitions à gauche */
 var rayon=300;
 var xCentre=rayon;
 var yCentre=rayon;
-var xDecalage=rayon+10;
+var xDecalage=rayon+10+decalageCanvas;
 var yDecalage=rayon+10;
 		
 // Les disques
@@ -65,7 +67,8 @@ unDisque.prototype.distanceSouris=function()
 	{
 		  var xCentre=this.x+cote/2;
 		  var yCentre=this.y+cote/2;
-		  var xSouris=mouseX-xDecalage-decalageCanvas;
+		  //var xSouris=mouseX-xDecalage;
+		  var xSouris=mouseX-xDecalage;
 		  var ySouris=mouseY-yDecalage;
 		 //window.alert('le disque : ('+xCentre+';'+yCentre+')');
 		  return (xCentre-xSouris)*(xCentre-xSouris)
@@ -77,7 +80,7 @@ unDisque.prototype.estSelectionne=function()
 	{
 		  //window.alert('disque : ('+this.x+';'+this.y+')');
 		  var lecartSouris=this.distanceSouris();
-			window.console.log("disque en : ("+this.x+";"+this.y+") ; souris en : ("+mouseX+" ; "+mouseY+") ; cela donne comme écart : "+lecartSouris);
+			//window.console.log("disque en : ("+this.x+";"+this.y+") ; souris en : ("+mouseX+" ; "+mouseY+") ; cela donne comme écart : "+lecartSouris);
 		  if (lecartSouris<75)
 		  {
 		    //window.alert('redessine');
@@ -722,8 +725,7 @@ function arreturgence()
 		
 //var angle_base = TWO_PI / nbDisques;
 
-// le décalage du disque
-var decalageCanvas=600;
+
 		
 // La fonction de démarrage
 			
@@ -732,10 +734,7 @@ function setup()
   var leCanvas=createCanvas(800+decalageCanvas, 800);
   leCanvas.parent('monCanvas');
   
-  // le décalage vers la droite
-  push();
-  translate(decalageCanvas,0);
-  
+    
   // le disque dur
   push();
   translate(xDecalage,yDecalage);
@@ -783,7 +782,7 @@ function setup()
   
   // décalage des boutons
   push();
-  translate(50,0);
+  translate(decalageCanvas+50,0);
   
   // les boutons
   textSize(24);
@@ -806,8 +805,7 @@ function setup()
   //fin décalage des boutons
   pop();
   
-  // fin du graphique
-  pop();
+  
   
   // le tableau de commandes
   tableauCommande();
