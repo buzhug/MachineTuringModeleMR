@@ -27,6 +27,10 @@ Colonnes déplacements sur fond jaune clair
 Colonnes états : un fond clair en alternant de légères différences une colonne sur deux de façon à mieux se repérer
 
 Et si tu pouvais faire que les cases sélectionnées soient marquées par un rond gris foncé qui rappellerais les perçages....
+<<<<<<< HEAD
 -> nécessite sans doute d'aller voir dans les textures … en fait non, juste trouver le bon caractère unicode et la bonne taille
+=======
+-> nécessite sans doute d'aller voir dans les textures … 
+>>>>>>> a7551f4e035a8750c0710f33b4a8e7f8d0dfc135
 
 3. Il faudrait aussi deux boutons "Effacer les saisies dans la table des transitions" et "Effacer les données sur le disque" -> fait

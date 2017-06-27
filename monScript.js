@@ -3,8 +3,13 @@
 ///////////////////////
 
 /* ajustement ergonomie
+<<<<<<< HEAD
 changement de couleur de la table des transitions
 perçage des cases */
+=======
+passage du disque à droite 
+et de la table des transitions à gauche */
+>>>>>>> a7551f4e035a8750c0710f33b4a8e7f8d0dfc135
 
 
 
@@ -756,6 +761,7 @@ function arreturgence()
 function effaceTable()
 {
 	window.console.log("pour remettre à zéro la table des transitions");
+<<<<<<< HEAD
 	// vide les cases
 	initCouleurCase();
 	// remets à zéro le tableau des cases cochées
@@ -771,6 +777,9 @@ function effaceTable()
 	}
 	// remet l'état F en blanc, au cas où
 	document.getElementById("Fetat").style.backgroundColor='white';
+=======
+	initCouleurCase();
+>>>>>>> a7551f4e035a8750c0710f33b4a8e7f8d0dfc135
 }
 
 
