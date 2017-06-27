@@ -53,8 +53,14 @@
 		<div id="arreturgence">
 		<input type="button"  value="arr&ecirc;ter"  onclick="arreturgence();">
 		</div>
+		
 		</div>
 		</form>
+		</div>
+		
+		<!-- le curseur pour modifier la vitesse d'exécution -->
+		<div id="curseur"> Vitesse d'exécution <br>
+		+<input type="range" id="vitesse" min="20" max="1000" value="500" step="10"   onchange="changeVitesse(this.value);">-
 		</div>
 			
 		<!-- le dessin se trouvera dans le div défini ci-dessous -->
