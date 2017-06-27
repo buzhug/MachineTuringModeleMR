@@ -610,7 +610,7 @@ function execution()
 	
 // le pilotage automatique
 ///////////////////////////
-var tAuto;
+var tAuto=null;
 
 function etapeSuivante()
 {
