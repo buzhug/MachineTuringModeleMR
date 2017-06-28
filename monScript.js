@@ -218,19 +218,19 @@ function nomEtape(etatencours)
 function tableauCommande()
 {
 	// entête du tableau 
-	var enteteTableau="<table><caption>Table des transitions</caption><thead>";
-	enteteTableau+="<tr><th rowspan='2'>Etat</th><th  rowspan='2'>Lecture</th><th colspan='3'>Ecriture</th><th colspan='2'>Déplacement</th><th colspan='12'>Nouvel état</th></tr>";
-	enteteTableau+="<tr><th>b</th>";
+	var enteteTableau="<table class='tabCo'><caption>Table des transitions</caption><thead>";
+	enteteTableau+="<tr><th class='thCo' rowspan='2'>Etat</th><th class='thCo'  rowspan='2'>Lecture</th><th class='thCo' colspan='3'>Ecriture</th><th class='thCo' colspan='2'>Déplacement</th><th class='thCo' colspan='12'>Nouvel état</th></tr>";
+	enteteTableau+="<tr><th class='thCo'>b</th>";
 	for (var i=0;i<2;i++)
 	{
-		enteteTableau+="<th>"+i+"</th>";
+		enteteTableau+="<th class='thCo'>"+i+"</th>";
 	}
-	enteteTableau+="<th>G</th><th>D</th>";
+	enteteTableau+="<th class='thCo'>G</th><th class='thCo'>D</th>";
 	for (var i=1;i<12;i++)
 	{
-		enteteTableau+="<th>"+i+"</th>";
+		enteteTableau+="<th class='thCo'>"+i+"</th>";
 	}
-	enteteTableau+="<th>F</th></tr></thead>";
+	enteteTableau+="<th class='thCo'>F</th></tr></thead>";
 	// corps du tableau 
 	var corpsTableau=" <tbody>";
 	
@@ -238,7 +238,7 @@ function tableauCommande()
 	for (var i=0;i<nbEtats;i++)
 	{
 		// état i
-		corpsEtat[i]="<tr><td rowspan='3' id="+nomEtape(i)+">"+(i+1)+"</td>";
+		corpsEtat[i]="<tr class='rangee'><td rowspan='3' id="+nomEtape(i)+">"+(i+1)+"</td>";
 		// boucle sur les trois états possibles
 		for (var j=0;j<3;j++)
 		{
@@ -267,7 +267,7 @@ function tableauCommande()
 		}
 	}
 	// fin du tableau
-	var etatF="<tr><td colspan='19' id='Fetat'>F</td></tr>";
+	var etatF="<tr class='rangee'><td colspan='19' id='Fetat'>F</td></tr>";
 	var finTableau="</tbody></table>";
 	
 	//affichage du tableau 
