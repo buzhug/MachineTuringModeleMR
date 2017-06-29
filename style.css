@@ -20,7 +20,7 @@ a
 #zone_commande
 		{
 		  position:absolute;
-      top:150px;
+      top:200px;
 		  left:10px;
 		  width:700px;
 		}
@@ -109,7 +109,7 @@ td
 #effaceTable
 {
 	position:absolute;
-	top:940px;
+	top:990px;
 	left:150px;
 }
 

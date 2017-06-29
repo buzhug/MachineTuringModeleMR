@@ -189,7 +189,8 @@ var decalageBoutons=decalageCanvas+50;
 		{
 			window.console.log("change le contenu avec "+letexte);
 		  this.texte=letexte;
-		  this.dessiner();
+		  // impossible de le redessiner au bon endroit à cause du décalage des boutons
+		  //this.dessiner();
 		}
 		
 /////////////////////////
