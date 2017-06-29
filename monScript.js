@@ -614,6 +614,7 @@ function faire()
 	deplacement();
 	// zone de changement d'étape
 	nouvelEtat=etatFutur()+1;
+if (nouvelEtat!=etatActuel) document.getElementById(nomEtape(nouvelEtat-1)).style.backgroundColor='LightCyan';
 }
 
 
