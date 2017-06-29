@@ -45,6 +45,7 @@ Pour le disque, tu pourrais écrire : 3cliquez une fois sur un cercle blanc pour
 3. Résoudre le dysfonctionnement des boutons Déplacer, Ecrire et Lecture -> origine de l'erreur  trouvée : problème du décalae des boutons ; réglé en trichant un peu : le bouton de valeur de lecture se redessine en permanence
 
 4. Vitesse : grande vitesse à droite ; réduire vitesse maximum
+-> fait mais est-ce suffisant ?
 
 5. Faire apparaîre l'état à venir avant d'appuyer sur suivant
 

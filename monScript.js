@@ -656,11 +656,13 @@ function execution()
 ////	
 // Le pilotage automatique
 ///////////////////////////
+var vitesseMin=30;
+var vitesseMax=1000;
 // le changement de vitesse de temporisation
 function changeVitesse(nvit)
 { 
-	window.console.log("passage de la vitesse à "+nvit);
-	delai=nvit;
+	delai=vitesseMax-nvit+vitesseMin;
+	window.console.log("passage de la vitesse à "+delai);
 }
 
 // pour lancer l'execution en boucle
@@ -892,7 +894,7 @@ function setup()
 	
 	// remet le curseur à la bonne valeur
 	delai=500;
-	document.getElementById("vitesse").value=delai;
+	document.getElementById("vitesse").value=vitesseMax-delai+vitesseMin;
 	
 	
 	// affiche les boutons de remise à zéro
