@@ -123,6 +123,7 @@ unDisque.prototype.changeEtat=function(letat)
 
 // Les boutons de commande
 ///////////////////////////
+var decalageBoutons=decalageCanvas+50;
 		
 		
 		var btn_Droite=new unBouton(80,700,"D",'yellow');
@@ -159,7 +160,7 @@ unDisque.prototype.changeEtat=function(letat)
 		// calculer la distance entre le bouton et la souris
 		unBouton.prototype.distanceSouris=function()
 		{
-		  var xCentre=this.x+20;
+		  var xCentre=this.x+20+decalageBoutons;
 		  var yCentre=this.y+20;
 		  var xSouris=mouseX;
 		  var ySouris=mouseY;
@@ -171,7 +172,7 @@ unDisque.prototype.changeEtat=function(letat)
 		// vérifie si le bouton est sélectionné
 		unBouton.prototype.estSelectionne=function()
 		{
-			//window.alert("("+mouseX+";"+mouseY+") pour "+this.distanceSouris());
+			window.console.log("("+mouseX+";"+mouseY+") pour "+this.distanceSouris());
 		  if (this.distanceSouris()<800)
 		  {
 		    //window.alert('coucou');
@@ -186,6 +187,7 @@ unDisque.prototype.changeEtat=function(letat)
 		// change le texte du bouton
 		unBouton.prototype.changeTexte=function(letexte)
 		{
+			window.console.log("change le contenu avec "+letexte);
 		  this.texte=letexte;
 		  this.dessiner();
 		}
@@ -847,7 +849,7 @@ function setup()
   
   // décalage des boutons
   push();
-  translate(decalageCanvas+50,0);
+  translate(decalageBoutons,0);
   
   // les boutons
   textSize(24);
@@ -901,6 +903,10 @@ function setup()
   // La fonction qui tourne en boucle
 function draw() 
 {
+	 push();
+  translate(decalageBoutons,0);
+  btn_ValeurLue.dessiner();
+  pop();
   
 }
 
@@ -913,7 +919,7 @@ function draw()
    // window.alert('repère ('+(mouseX-xDecalage)+';'+(mouseY-yDecalage)+')');
     
     // teste si un disque est dessous et en change l'état
-    for (i=0;i<nbDisques;i++)
+    for (var i=0;i<nbDisques;i++)
     {
       lesDisques[i].estSelectionne();
     }
@@ -924,7 +930,7 @@ function draw()
       // remet le bouton de lecture à zéro
       btn_ValeurLue.changeTexte(" ");
       
-      for (i=0;i<nbDisques;i++)
+      for (var i=0;i<nbDisques;i++)
       {
         lesDisques[i].aGauche();
       }
@@ -937,7 +943,7 @@ function draw()
       // remet le bouton de lecture à zéro
       btn_ValeurLue.changeTexte(" ");
       
-      for (i=0;i<nbDisques;i++)
+      for (var i=0;i<nbDisques;i++)
       {
         lesDisques[i].aDroite();
       }
@@ -951,7 +957,7 @@ function draw()
       btn_ValeurLue.changeTexte(" ");
       
       // détecte le bouton sur la zone de lecture/écriture
-      for (i=0;i<nbDisques;i++)
+      for (var i=0;i<nbDisques;i++)
       {
         // je teste l'abscisse et non l'angle pour éviter le modulo 2π
         if (lesDisques[i].y==284) lesDisques[i].changeEtat(0);
@@ -964,7 +970,7 @@ function draw()
       btn_ValeurLue.changeTexte(" ");
       
       // détecte le bouton sur la zone de lecture/écriture
-      for (i=0;i<nbDisques;i++)
+      for (var i=0;i<nbDisques;i++)
       {
         // je teste l'abscisse et non l'angle pour éviter le modulo 2π
         if (lesDisques[i].y==284) lesDisques[i].changeEtat(1);
@@ -977,7 +983,7 @@ function draw()
       btn_ValeurLue.changeTexte(" ");
       
       // détecte le bouton sur la zone de lecture/écriture
-      for (i=0;i<nbDisques;i++)
+      for (var i=0;i<nbDisques;i++)
       {
         // je teste l'abscisse et non l'angle pour éviter le modulo 2π
         if (lesDisques[i].y==284) lesDisques[i].changeEtat(2);
@@ -989,16 +995,19 @@ function draw()
     
     if (btn_Lecture.estSelectionne())
     {
+    	window.console.log("bouton lecture");
       // détecte le bouton sur la zone de lecture/écriture
-      for (i=0;i<nbDisques;i++)
+      for (var i=0;i<nbDisques;i++)
       {
         var sonTexte=" ";
-        // je teste l'abscisse et non l'angle pour éviter le modulo 2π
+        // je teste l'ordonnée et non l'angle pour éviter le modulo 2π
         if (lesDisques[i].y==284) 
         {
+        	window.console.log("disque "+i+" est sélectionné");
           if (lesDisques[i].etat==0) sonTexte="B";
           if (lesDisques[i].etat==1) sonTexte="0";
           if (lesDisques[i].etat==2) sonTexte="1";
+          window.console.log("valeur lue = "+sonTexte);
           btn_ValeurLue.changeTexte(sonTexte);
         }
       }
