@@ -84,7 +84,27 @@
 	<input type="button" id="effaceTable" value="Effacer les saisies dans la table des transitions." onclick="effaceTable();">
 	<input type="button" id="effaceDisque" value="Effacer les données sur le disque." onclick="effaceDisque();">
 	</div>
-		
+	
+	<!-- pour gérer les écriture/lecture de l'algorithme -->
+	<div id="algo">
+		<div id="enregistrer">
+			Enregistrer l'algorithme sous le nom  
+			<input type="text" id="nomAlgo" value="">
+			<input type="button"  value="enregistrer" onclick="enregistrer();"> 
+		</div>
+		<div id="ouvrir">
+			Ouvrir l'algorithme nommé 
+			<input type="text" id="nomAlgoF" value="">
+			<input type="button"  value="ouvrir" onclick="ouvrir();">
+		</div>
+		<div id="choisirAlgo">
+			Choisir un algorithme dans la liste
+			<form id="listeAlgo" name="listeAlgo"></form>
+			<input type="button"  value="valider" onclick="valider();">
+		</div>
+	</div>
+	
+	
 		
 		
 	

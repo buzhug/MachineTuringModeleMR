@@ -2,9 +2,12 @@
 // Machine de Turing //
 ///////////////////////
 
-/* ajustement ergonomie
-changement de couleur de la table des transitions
-perçage des cases */
+/* tests d'enregistrements d'algorithmes */
+
+// repérage d'une erreur : ligne 620 à modifier partout dans les fichiers avant AlgoV2
+// cette version fonctionne 
+
+//test menu déroulant 
 
 
 
@@ -614,7 +617,10 @@ function faire()
 	deplacement();
 	// zone de changement d'étape
 	nouvelEtat=etatFutur()+1;
-if (nouvelEtat!=etatActuel) document.getElementById(nomEtape(nouvelEtat-1)).style.backgroundColor='LightCyan';
+	window.console.log("état qui pose problème : "+nouvelEtat);
+	
+	// ligne à modifier sur les autres !!!
+if ((nouvelEtat!=etatActuel)&&(nouvelEtat<12)) document.getElementById(nomEtape(nouvelEtat-1)).style.backgroundColor='LightCyan';
 }
 
 
@@ -789,6 +795,140 @@ function effaceDisque()
     lesDisques[i].changeEtat(0);
   }
 }
+
+
+
+///////////////////////////////////////////////
+/* la lecture et l'écriture des algorithmes */
+/////////////////////////////////////////////
+
+// la variable json
+var json; // euh, sert-elle encore à quelque chose ????
+
+
+
+
+// enregistrer l'algorithme
+// pour le moment cela l'enregistre dans téléchargements
+
+
+
+function enregistrer()
+{
+	var nomFichier=document.getElementById('nomAlgo').value;
+	var texteJson=JSON.stringify(casesCochees);
+	nomFichier=nomFichier+'.json';
+	saveJSON(texteJson,nomFichier);
+	
+}
+
+// la variable de temps pour l'ouverture
+var tempsChargement=3000;
+// le json récupéré
+
+
+
+
+
+// ouvrir un algorithme enregistré
+
+function ouvrir()
+{
+	var nomFichier=document.getElementById('nomAlgoF').value;
+	//nomFichier=nomFichier+'.txt';
+	nomFichier=nomFichier+'.json';
+	window.console.log("essai d'ouverture de "+nomFichier);
+	
+   
+   // qui fonctionne dans un autre fichier
+   var xmlhttp = new XMLHttpRequest();
+xmlhttp.overrideMimeType("application/json"); // enlève la première erreur concernant XML
+xmlhttp.onreadystatechange = function() 
+	{
+    	if (this.readyState == 4 && this.status == 200) 
+    		{
+        		var myObj = JSON.parse(this.responseText); // ce premier .parse enlève les ""
+        		window.console.log("dans le fichier "+nomFichier+ "le tableau de l'algo est "+myObj);
+        		ecritAlgoCharge(JSON.parse(myObj)); // ce deuxième .parse transforme en tableau
+   			 }
+	};
+xmlhttp.open("GET", nomFichier, true);
+xmlhttp.send();
+
+   
+}
+
+
+
+// cette version fonctionne !!!!!
+
+function ecritAlgoCharge(lesCasesAEcrire)
+{
+	// juste pour voir si on arrive jusque là
+	window.alert("tentative d'écriture dans la table");
+	window.console.log("table à écrire : "+lesCasesAEcrire);
+	// efface la table
+	effaceTable();
+	// rappel noms des cases = case10002 pour i=10, j=0 et k=2 => rajouter 0 au besoin pour i et k
+	//ecrit l'algo
+	
+	for (var i=0;i<nbEtats;i++)
+	{
+		for (var j=0;j<3;j++)
+		{
+			for (var k=0;k<17;k++)
+			{
+				var laCaseACocher="case";
+				if (i<10) laCaseACocher+="0";
+				laCaseACocher+=i;
+				laCaseACocher+=j;
+				if (k<10) laCaseACocher+="0";
+				laCaseACocher+=k;
+				//window.console.log("rang "+i+" "+j+" "+k);
+				if (lesCasesAEcrire[i][j][k]) 
+				{
+					window.console.log("tentative de cochage de "+laCaseACocher);
+					document.getElementById(laCaseACocher).innerHTML="\u2B24" ;
+					casesCochees[i][j][k]=true;
+				}
+				else casesCochees[i][j][k]=false;
+			}
+		}
+	}
+}
+
+////////////////////////////////////////////
+/* Création 'manuelle' du menu déroulant */
+//////////////////////////////////////////
+
+// la liste des fichiers est connue
+// ils sont dans le même dossier que le reste pour le moment
+
+var tabAlgo=["inverse_couleurs","ajouter1","enlever1","unaireEnBinaire","binaireEnUnaire"];
+var contenuMenuDeroulant='<select name=\"choixAlgo\">';
+var tabOption='<option value=\"\">Choisir...</option>';
+	for (var j=1;j<=tabAlgo.length;j++)
+	{
+		tabOption+='<option value=';
+		tabOption+=tabAlgo[j-1];
+		tabOption+='>';
+		tabOption+=tabAlgo[j-1];
+		tabOption+='</option>'
+	}
+contenuMenuDeroulant+=tabOption;
+contenuMenuDeroulant+='</select>';
+
+
+// valide le choix du fichier
+function valider()
+{
+	var lindex=document.forms['listeAlgo'].elements['choixAlgo'].selectedIndex;
+	var lechoix=document.forms['listeAlgo'].elements['choixAlgo'].options[lindex].value;
+	document.getElementById('nomAlgoF').value=lechoix;
+	ouvrir();
+	
+}
+
 		
 ////////////////////////		
 /* L'animation		 */
@@ -796,6 +936,19 @@ function effaceDisque()
 		
 //var angle_base = TWO_PI / nbDisques;
 
+// chargement de la liste des fichiers
+
+window.onload=function()
+{
+	document.getElementById('listeAlgo').innerHTML=contenuMenuDeroulant;
+	// la remise à zéro des zones de choix
+	// zone d'enregistrement
+	document.getElementById('nomAlgo').value=""
+	// zone d'ouverture
+	document.getElementById('nomAlgoF').value="";
+	// menu déroulant
+	document.forms['listeAlgo'].elements['choixAlgo'].selectedIndex=0;
+}
 
 		
 // La fonction de démarrage

@@ -1,51 +1,11 @@
 Modifications à envisager
 
-1. Pilotage automatique
-arriver à mettre un temporisateur pour permettre le pilotage automatique
-avec
-var x=setTimeout(mafonction,delai);
-clearTimeout(x); -> fait
+1. Pouvoir récupérer un algo enregistré dans un dossier exemples 
 
-2. Fonctionnement de l'horloge
-Faire tourner l'horloge en fonction de ce que le programme regare : lecture, écriture, déplacement, changement d'étape -> repoussé à plus tard
+2. Pouvoir enregistrer l'algo dans le même dossier
 
-3. Vérifier l'adéquation de la mise en couleur avec le timing -> ça ne collera jamais, c'est déjà mieux qu'avant
+3. Enlever la vitesse au lancement automatique (pas fait encore)
 
-4. Pour la possibilité d'enregistrer/lire les algorithmes
-voir loadJSON() et saveJSON() sur p5 -> on va attendre un peu
+4. Gérer l'affichage par rapport à la fenêtre (pas fait encore)
 
-
-// les demandes de Marc
-
-1. la table des transitions à gauche et le disque à droite avec au dessus, les indications "Commencer par remplir la table des transitions" et à droite "Saisissez maintenant les données sur le disque"
--> fait mais ça ne me semble pas une bonne idée car ça empêche d'étendre la table des transitions ; résidu de tableau apparent en haut à gauche … je ne sais pas pourquoi
-
-2. Pour la table des transitions, je verrais bien :
-
-Colonnes déplacements sur fond jaune clair
-
-Colonnes états : un fond clair en alternant de légères différences une colonne sur deux de façon à mieux se repérer
-
-Et si tu pouvais faire que les cases sélectionnées soient marquées par un rond gris foncé qui rappellerais les perçages....
--> nécessite sans doute d'aller voir dans les textures … en fait non, juste trouver le bon caractère unicode et la bonne taille
-
-3. Il faudrait aussi deux boutons "Effacer les saisies dans la table des transitions" et "Effacer les données sur le disque" -> fait
-
-
-// les demandes de Marc (bis)
-
-1. Modifier un peu les consignes
- "Cliquez dans une case pour sélectionner, cliquez de nouveau pour effacer"
-Pour le disque, tu pourrais écrire : 3cliquez une fois sur un cercle blanc pour obtenir 0,(cercle rouge), cliquez de nouveau pour obtenir 1 (cercle vert) cliquez de nouveau pour obtenir un blanc.
--> fait : garde--t-on l'encadrement qui s'est créé par la même occasion ?
-
-2. Agrandir un peu les disques noirs dans la table des transitions
--> pas possible pour le moment : augment la taille de la case et la partie blanche est la même du coup autour
-
-3. Résoudre le dysfonctionnement des boutons Déplacer, Ecrire et Lecture -> origine de l'erreur  trouvée : problème du décalae des boutons ; réglé en trichant un peu : le bouton de valeur de lecture se redessine en permanence
-
-4. Vitesse : grande vitesse à droite ; réduire vitesse maximum
--> fait mais est-ce suffisant ?
-
-5. Faire apparaîre l'état à venir avant d'appuyer sur suivant
-
+5. Revoir la disposition de certains « boutons » : réinitialisation de la table et du disque, menu déroulant
