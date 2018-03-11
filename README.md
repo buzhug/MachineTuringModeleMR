@@ -1,1 +1,1 @@
-# MachineTuringModeleMR
+# MachineTuringAvecAlgo
